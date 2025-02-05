@@ -11,18 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_address', function (Blueprint $table) {
+        Schema::create('cart', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lable_as');
-            $table->string('country');
-            $table->string('city');
-            $table->string('district');
-            $table->string('address_detail');
-            $table->float('lat');
-            $table->float('long');
-            $table->string('phone');
             $table->unsignedInteger('user_id');
+            $table->integer('product_sku');
+            $table->integer('amount');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_address');
+        Schema::dropIfExists('cart');
     }
 };

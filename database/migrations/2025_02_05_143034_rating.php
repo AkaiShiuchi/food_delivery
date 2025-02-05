@@ -11,21 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_address', function (Blueprint $table) {
+        Schema::create('rating', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lable_as');
-            $table->string('country');
-            $table->string('city');
-            $table->string('district');
-            $table->string('address_detail');
-            $table->float('lat');
-            $table->float('long');
-            $table->string('phone');
+            $table->integer('star');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
         });
     }
 
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_address');
+        Schema::dropIfExists('rating');
     }
 };
