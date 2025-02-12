@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('coupon', function (Blueprint $table) {
+        Schema::create('coupon', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('discount');
             $table->dateTime('created_day');
             $table->dateTime('expired_day');
             $table->integer('amount');
-            $table->integer('grant_by');
+            $table->integer('grant_by')->nullable();;
             $table->timestamps();
         });
     }

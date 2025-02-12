@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('order_product', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_sku');
+            $table->integer('product_sku')->nullable();;
             $table->integer('amount');
             $table->timestamps();
         });

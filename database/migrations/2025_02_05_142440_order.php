@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('delivery_vehicle');
             $table->dateTime('order_date');
             $table->integer('status');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('user_address_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_address_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

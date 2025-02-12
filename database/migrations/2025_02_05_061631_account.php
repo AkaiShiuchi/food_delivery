@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('account', function (Blueprint $table) {
+        Schema::create('account', function (Blueprint $table) {
             $table->id();
             $table->string('gmail');
             $table->string('password');
             $table->string('phone');
             $table->dateTime('verified_at');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

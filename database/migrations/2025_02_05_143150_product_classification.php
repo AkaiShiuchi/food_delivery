@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('product_classification', function (Blueprint $table) {
             $table->id();
-            $table->integer('sku');
-            $table->unsignedInteger('product_id');
-            $table->string('unit');
+            $table->integer('sku')->nullable();;
+            $table->unsignedBigInteger('product_id');
+            $table->string('unit')->nullable();;
             $table->integer('size');
             $table->float('cost');
             $table->timestamps();

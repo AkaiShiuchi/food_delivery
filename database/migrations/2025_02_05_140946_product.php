@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();;
             $table->float('rating');
             $table->float('delivery_cost');
             $table->integer('cooking_time');
-            $table->string('ingredients');
-            $table->integer('offer');
-            $table->integer('serve_on');
-            $table->unsignedInteger('restaurant_id');
-            $table->unsignedInteger('category_id');
+            $table->string('ingredients')->nullable();;
+            $table->integer('offer')->nullable();;
+            $table->integer('serve_on')->nullable();;
+            $table->unsignedBigInteger('restaurant_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
-            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+            $table->foreign('restaurant_id')->references('id')->on('restaurant')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
         });
     }

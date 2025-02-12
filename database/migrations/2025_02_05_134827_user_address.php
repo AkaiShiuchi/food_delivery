@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('user_address', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('lable_as');
+            $table->string('lable_as')->nullable();;
             $table->string('country');
             $table->string('city');
-            $table->string('district');
+            $table->string('district')->nullable();;
             $table->string('address_detail');
-            $table->float('lat');
-            $table->float('long');
+            $table->float('lat')->nullable();;
+            $table->float('long')->nullable();;
             $table->string('phone');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

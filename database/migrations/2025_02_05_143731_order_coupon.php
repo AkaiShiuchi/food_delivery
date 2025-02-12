@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('order_coupon', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('order_id');
-            $table->unsignedInteger('user_coupon_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('user_coupon_id');
             $table->timestamps();
 
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('order')->onDelete('cascade');
             $table->foreign('user_coupon_id')->references('id')->on('user_coupon')->onDelete('cascade');
         });
     }
